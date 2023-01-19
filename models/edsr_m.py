@@ -145,7 +145,7 @@ class EDSR(nn.Module):
         if self.args.no_upsampling:
             x = res
         else:
-            up_x = core.imresize(x, sizes=(round(h*scale_factor),round(w*scale_factor)))
+            up_x = core.imresize(x, sizes=(torch.round(h*scale_factor),torch.round(w*scale_factor)))
             x = self.tail(up_x)
             # x = self.tail(res)
         #x = self.add_mean(x)
